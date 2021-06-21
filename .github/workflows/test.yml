@@ -13,5 +13,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Set swap
+      uses: pierotofy/set-swap-space@master
+      with: 
+        swap-size-gb: 6
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
