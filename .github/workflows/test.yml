@@ -18,10 +18,5 @@ jobs:
             - B: "Is this text about reporting an issue or a bug?"
             - C: "Is this text about an issue with processing?"
           logic:
-            - "A & NOT(B)":
-              - comment: "Question"
-              - close: True
-              - stop: True
-            - "C":
-              - comment: "Processing"
-              - label: enhancement
+            - "A & NOT(B)": [comment: "Question", close: True, stop: True]
+            - "C": [comment: "Processing", label: enhancement]
