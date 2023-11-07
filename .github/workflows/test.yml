@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: pierotofy/issuewhiz@main
         with:
-            ghToken: {{ secrets.GITHUB_TOKEN }}
+            ghToken: ${{ secrets.GITHUB_TOKEN }}
