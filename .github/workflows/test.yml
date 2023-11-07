@@ -23,9 +23,11 @@ jobs:
             - E: "Contains a suggestion for an improvement or a feature request?"
             - SC: "Describes an issue related to compiling or building source code?"
           logic: |
-            - "Q and (not B) and (not P) and (not E) and (not SC)": [comment: "Please use forum", close: true, stop: true]
+            - "Q and (not B) and (not P) and (not E) and (not SC)": [comment: "Could we move this conversation over to the forum at https://community.opendronemap.org? :pray: The forum is the right place to ask questions (we try to keep the GitHub issue tracker for feature requests and bugs only). Thank you! :+1:", close: true, stop: true]
             - "B and (not P) and (not E) and (not SC)": [label: bug, stop: true]
             - "P and D": [label: "possible bug", stop: true]
             - "P and (not D) and (not SC) and (not E)": [comment: "dataset missing", close: true, stop: true]
-            - "E": [label: enhancement]
+            - "E": [label: enhancement, stop: true]
+            - "SC": [label: "possible bug"]
+
           signature: "p.s. I'm just an automated script, not a human being."
