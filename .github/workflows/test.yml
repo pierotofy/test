@@ -9,6 +9,6 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: pierotofy/issuewhiz
+      - uses: pierotofy/issuewhiz@main
         with:
             ghToken: {{ secrets.GITHUB_TOKEN }}
