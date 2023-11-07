@@ -25,5 +25,6 @@ jobs:
             - "A and (not B) and (not C)": [comment: "Please use forum", close: true, stop: true]
             - "B and (not C)": [label: bug, stop: true]
             - "C and (not D)": [comment: "dataset missing", close: true, stop: true]
+            - "C and D": [label: "possible bug", stop: true]
             - "E and (not B) and (not C)": [label: enhancement]
           signature: "p.s. I'm just an automated script, not a human being."
