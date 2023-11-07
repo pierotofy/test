@@ -1,4 +1,3 @@
-
 name: Label issues
 on:
   issues:
@@ -14,17 +13,10 @@ jobs:
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           openAI: ${{ secrets.OPENAI_TOKEN }}
-          filter:
-            - "#": ""
-          variables:
-            - A: Asking a question on using a software?
-            - B: Reporting an issue or a bug?
-            - C: An issue with processing?
-          logic:
-            - - expr: A & NOT(B)
-              - comment: Question
-              - close: true
-              - stop: true
-            - - expr: C
-              - comment: Processing
-              - label: enhancement
+          variables: |
+            - A: "Is this text about asking a question on using a software?"
+            - B: "Is this text about reporting an issue or a bug?"
+            - C: "Is this text about an issue with processing?"
+          logic: |
+            - "A & NOT(B)": [comment: "Question", close: True, stop: True]
+            - "C": [comment: "Processing", label: enhancement]
