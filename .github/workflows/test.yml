@@ -1,10 +1,10 @@
-name: Label issues
+name: Issue Triage
 on:
   issues:
     types:
       - opened
 jobs:
-  triage_issue:
+  issue_triage:
     runs-on: ubuntu-latest
     permissions:
       issues: write
@@ -13,10 +13,15 @@ jobs:
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           openAI: ${{ secrets.OPENAI_TOKEN }}
+          filter: |
+            - "#"
           variables: |
-            - A: "Is this text about asking a question on using a software?"
-            - B: "Is this text about reporting an issue or a bug?"
-            - C: "Is this text about an issue with processing?"
+            - A: "A question about using a software?"
+            - B: "Reporting an issue or a bug?"
+            - C: "An issue with processing?"
+            - D: "Contains a link to a dataset or images"
           logic: |
-            - "A & NOT(B)": [comment: "Question", close: True, stop: True]
-            - "C": [comment: "Processing", label: enhancement]
+            - "A and (not B) and (not C)": [comment: "Please use forum", close: true, stop: true]
+            - "B and (not C)": [label: bug, stop: true]
+            - "C and (not D)": [comment: "dataset missing", close: true, stop: true]
+          signature: "p.s. I'm just an automated script, not a human being."
