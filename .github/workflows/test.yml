@@ -20,10 +20,10 @@ jobs:
             - B: "Reporting an issue or a bug?"
             - C: "An issue with processing or a failure?"
             - D: "Contains a link to a dataset or images?"
-            - E: "Is a suggestion for a software improvement or enhancement?"
+            - E: "Contains a suggestion for an improvement or enhancement?"
           logic: |
             - "A and (not B) and (not C)": [comment: "Please use forum", close: true, stop: true]
-            - "B and (not C)": [label: bug, stop: true]
+            - "B and (not C) and (not E)": [label: bug, stop: true]
             - "C and (not D)": [comment: "dataset missing", close: true, stop: true]
             - "C and D": [label: "possible bug", stop: true]
             - "E and (not B) and (not C)": [label: enhancement]
