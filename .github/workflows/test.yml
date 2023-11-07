@@ -1,3 +1,4 @@
+
 name: Label issues
 on:
   issues:
@@ -16,9 +17,14 @@ jobs:
           filter:
             - "#": ""
           variables:
-            - A: "Asking a question on using a software?"
-            - B: "Reporting an issue or a bug?"
-            - C: "An issue with processing?"
+            - A: Asking a question on using a software?
+            - B: Reporting an issue or a bug?
+            - C: An issue with processing?
           logic:
-            - [expr: "A & NOT(B)", comment: "Question", close: True, stop: True]
-            - [expr: "C", comment: "Processing", label: enhancement]
+            - - expr: A & NOT(B)
+              - comment: Question
+              - close: true
+              - stop: true
+            - - expr: C
+              - comment: Processing
+              - label: enhancement
