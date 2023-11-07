@@ -17,11 +17,11 @@ jobs:
             - "#"
           variables: |
             - A: "A question about using a software or seeking guidance on doing something?"
-            - B: "Reporting an issue or a bug?"
-            - C: "An issue with processing or a failure?"
+            - B: "Reporting an issue or a software bug?"
+            - C: "Describes an issue with processing a set of images or a particular dataset"
             - D: "Contains a link to a dataset or images?"
             - E: "Contains a suggestion for an improvement or a feature request?"
-            - F: "An issue with compiling source code?"
+            - F: "Describes an issue related to compiling or building source code?"
           logic: |
             - "A and (not B) and (not C)": [comment: "Please use forum", close: true, stop: true]
             - "B and (not C) and (not E)": [label: bug, stop: true]
